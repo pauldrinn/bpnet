@@ -9,31 +9,31 @@ requirements = [
     "related",
     "cloudpickle>=1.0.0",
 
-    "concise==0.6.7",
+    "concise>=0.6.7",
     "deepexplain",
 
     # ml
     "gin-config",
-    "keras==2.3.1",
-    "scikit-learn==0.21.3",
+    "keras==2.2.4",
+    "scikit-learn",
     # "tensorflow",
 
     # numerics
-    "h5py==2.9.0",
-    "numpy==1.17.5",
-    "pandas==1.0.3",
-    "scipy==1.4.1",
-    "statsmodels==0.11.1",
+    "h5py",
+    "numpy",
+    "pandas",
+    "scipy",
+    "statsmodels",
 
     # Plotting
-    "matplotlib==3.0.2",
+    "matplotlib>=3.0.2",
     "plotnine",
     "seaborn",
 
     # genomics
-    "pybigwig==0.3.18",
-    "pybedtools==0.7.10",  # remove?
-    "modisco==0.5.3.0",
+    "pybigwig",
+    "pybedtools",  # remove?
+    "modisco>=0.5.1.2",
     # "pyranges",
 
     "joblib",
@@ -53,8 +53,8 @@ requirements = [
     "tqdm",
 
     # Remove
-    "genomelake==0.1.4",
-    "pysam==0.15.3",  # replace with pyfaidx
+    "genomelake",
+    "pysam",  # replace with pyfaidx
 ]
 
 optional = [
