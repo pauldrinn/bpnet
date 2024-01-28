@@ -1,11 +1,11 @@
 import numpy as np
 from kipoi_utils.external.torch.sampler import BatchSampler
-import collections
 from kipoi_utils.data_utils import (numpy_collate, numpy_collate_concat, get_dataset_item,
                                     DataloaderIterable, batch_gen, get_dataset_lens, iterable_cycle)
 from copy import deepcopy
 from bpnet.utils import flatten, unflatten
 from collections import OrderedDict
+from collections.abc import Mapping, Sequence
 import pandas as pd
 from tqdm import tqdm
 from kipoi.writers import HDF5BatchWriter
@@ -28,9 +28,9 @@ def to_numpy(data):
         return data
     if isinstance(data, torch.Tensor):
         return data.numpy()
-    elif isinstance(data, collections.Mapping):
+    elif isinstance(data, Mapping):
         return {key: to_numpy(data[key]) for key in data}
-    elif isinstance(data, collections.Sequence):
+    elif isinstance(data, Sequence):
         if isinstance(data[0], str):
             return data
         else:
@@ -143,9 +143,9 @@ class Dataset(BaseDataLoader):
 
 def nested_numpy_minibatch(data, batch_size=1):
     lens = get_dataset_lens(data)
-    if isinstance(lens, collections.Mapping):
+    if isinstance(lens, Mapping):
         ln = [v for v in lens.values()][0]
-    elif isinstance(lens, collections.Sequence):
+    elif isinstance(lens, Sequence):
         ln = lens[0]
     else:
         ln = lens
@@ -219,9 +219,9 @@ class NumpyDataset(Dataset):
         def _dapply(data, fn, *args, **kwargs):
             if type(data).__module__ == 'numpy':
                 return fn(data, *args, **kwargs)
-            elif isinstance(data, collections.Mapping):
+            elif isinstance(data, Mapping):
                 return {key: _dapply(data[key], fn, *args, **kwargs) for key in data}
-            elif isinstance(data, collections.Sequence):
+            elif isinstance(data, Sequence):
                 return [_dapply(sample, fn, *args, **kwargs) for sample in data]
             else:
                 raise ValueError("Leafs of the nested structure need to be numpy arrays")

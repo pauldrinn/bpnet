@@ -25,7 +25,7 @@ def multinomial_nll(true_counts, logits):
     counts_per_example = tf.reduce_sum(true_counts_perm, axis=-1)
 
     # Change this to tfp. for TF2
-    dist = tfp.contrib.distributions.Multinomial(total_count=counts_per_example,
+    dist = tfp.distributions.Multinomial(total_count=counts_per_example,
                                                 logits=logits_perm)
 
     # Normalize by batch size. One could also normalize by

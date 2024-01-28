@@ -8,13 +8,13 @@ from gin import config
 import keras
 
 # keras.optimizers
-config.external_configurable(keras.optimizers.Adam, module='keras.optimizers')
-config.external_configurable(keras.optimizers.RMSprop, module='keras.optimizers')
-config.external_configurable(keras.optimizers.Adagrad, module='keras.optimizers')
-config.external_configurable(keras.optimizers.Adadelta, module='keras.optimizers')
-config.external_configurable(keras.optimizers.Adamax, module='keras.optimizers')
-config.external_configurable(keras.optimizers.Nadam, module='keras.optimizers')
-config.external_configurable(keras.optimizers.SGD, module='keras.optimizers')
+config.external_configurable(keras.optimizers.legacy.Adam, module='keras.optimizers')
+config.external_configurable(keras.optimizers.legacy.RMSprop, module='keras.optimizers')
+config.external_configurable(keras.optimizers.legacy.Adagrad, module='keras.optimizers')
+config.external_configurable(keras.optimizers.legacy.Adadelta, module='keras.optimizers')
+config.external_configurable(keras.optimizers.legacy.Adamax, module='keras.optimizers')
+config.external_configurable(keras.optimizers.legacy.Nadam, module='keras.optimizers')
+config.external_configurable(keras.optimizers.legacy.SGD, module='keras.optimizers')
 
 
 # modisco

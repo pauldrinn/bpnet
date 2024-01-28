@@ -371,7 +371,7 @@ def pd_col_prepend(df: pd.DataFrame, column, prefix='', suffix=''):
 def create_tf_session(visiblegpus, per_process_gpu_memory_fraction=0.45):
     import os
     import tensorflow as tf
-    import keras.backend as K
+    import tensorflow.python.keras.backend as K
     os.environ['CUDA_VISIBLE_DEVICES'] = str(visiblegpus)
     session_config = tf.compat.v1.ConfigProto()
     # session_config.gpu_options.deferred_deletion_bytes = DEFER_DELETE_SIZE
