@@ -1,11 +1,10 @@
 import keras
 import keras.backend as K
 import keras.layers as kl
-from concise.utils.helper import get_from_module
 from keras.activations import softmax
+from bpnet.utils import get_from_module
 import tensorflow as tf
 import gin
-
 
 @gin.configurable
 def clipped_exp(x, min_value=-50, max_value=50):

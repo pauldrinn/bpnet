@@ -17,9 +17,8 @@ from bpnet.utils import to_list
 from bpnet.dataspecs import DataSpec
 from bpnet.preproc import bin_counts, keep_interval, moving_average, IntervalAugmentor
 from bpnet.extractors import _chrom_sizes, _chrom_names
-from concise.utils.helper import get_from_module
+from bpnet.utils import get_from_module
 from tqdm import tqdm
-from concise.preprocessing import encodeDNA
 from random import Random
 import joblib
 from bpnet.preproc import resize_interval

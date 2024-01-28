@@ -8,7 +8,7 @@ import numpy as np
 from bpnet.modisco.utils import longer_pattern
 import bpnet
 from bpnet.modisco.core import Pattern
-from concise.preprocessing import encodeDNA
+from bpnet.concise.preprocessing import encodeDNA
 
 
 def scan_seq(p, seq):

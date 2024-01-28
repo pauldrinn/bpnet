@@ -43,7 +43,7 @@ class BaseNet:
 
 def test_interpret_wo_bias():
     from bpnet.metrics import RegressionMetrics, ClassificationMetrics, PeakPredictionProfileMetric
-    from concise.preprocessing import encodeDNA
+    from bpnet.concise.preprocessing import encodeDNA
     # test the model
     seqs = encodeDNA(['ACAGA'] * 100)
 

@@ -33,7 +33,7 @@ def vdom_pssm(pssm, letter_width=0.2, letter_height=0.8, **kwargs):
     """Nicely plot the pssm
     """
     import matplotlib.pyplot as plt
-    from concise.utils.plot import seqlogo_fig, seqlogo
+    from bpnet.concise.plot import seqlogo_fig, seqlogo
     fig, ax = plt.subplots(figsize=(letter_width * len(pssm), letter_height))
     ax.axison = False
     seqlogo(pssm, ax=ax)

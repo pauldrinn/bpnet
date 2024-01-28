@@ -1,7 +1,7 @@
 import numpy as np
 from tqdm import tqdm
 import attr
-from concise.preprocessing import encodeDNA
+from bpnet.concise.preprocessing import encodeDNA
 from joblib import Parallel, delayed
 from collections import OrderedDict
 
@@ -24,8 +24,8 @@ def _chrom_sizes(fasta_file):
     chrom_lens = OrderedDict([(name, l) for name, l in zip(fa.references, fa.lengths)])
     if len(chrom_lens) == 0:
         raise ValueError(f"no chromosomes found in fasta file: {fasta_file}. "
-                         "Make sure the file path is correct and that the fasta index "
-                         "file {fasta_file}.fai is up to date")
+                         f"Make sure the file path is correct and that the fasta index "
+                         f"file {fasta_file}.fai is up to date")
     fa.close()
     return chrom_lens
 

@@ -398,17 +398,17 @@ class MetricsAggregated:
         return {self.prefix + k: fn(m) for k, fn in self.agg_fn}
 
 
-@gin.configurable
-class MetricsConcise:
-
-    def __init__(self, metrics):
-        import concise
-        self.metrics_dict = OrderedDict([(m, concise.eval_metrics.get(m))
-                                         for m in metrics])
-
-    def __call__(self, y_true, y_pred):
-        return OrderedDict([(m, fn(y_true, y_pred))
-                            for m, fn in self.metrics_dict.items()])
+#@gin.configurable
+#class MetricsConcise:
+#
+#    def __init__(self, metrics):
+#        import concise
+#        self.metrics_dict = OrderedDict([(m, concise.eval_metrics.get(m))
+#                                         for m in metrics])
+#
+#    def __call__(self, y_true, y_pred):
+#        return OrderedDict([(m, fn(y_true, y_pred))
+#                            for m, fn in self.metrics_dict.items()])
 
 
 # -----------------------------

@@ -13,9 +13,8 @@ from bpnet.data import nested_numpy_minibatch
 from bpnet.seqmodel import SeqModel
 from tqdm import tqdm
 from bpnet.utils import flatten_list
-from concise.utils.plot import seqlogo
 from bpnet.functions import mean
-from concise.preprocessing import encodeDNA
+from bpnet.concise.preprocessing import encodeDNA
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
@@ -423,7 +422,7 @@ class BPNetSeqModel:
                     else:
                         add_entry(bws[task]['preds.neg'], preds[:, 1],
                                   interval, start_idx)
-                        
+
                 # Get the contribution scores
                 seq = out[i]['seq']
                 hyp_contrib = out[i]['contrib_score']

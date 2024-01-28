@@ -6,7 +6,6 @@ from copy import deepcopy
 import pandas as pd
 from scipy.stats import entropy
 import random
-from concise.preprocessing import encodeDNA
 from bpnet.plot.tracks import plot_tracks
 from kipoi_utils.data_utils import get_dataset_item, numpy_collate_concat
 from bpnet.functions import mean, softmax

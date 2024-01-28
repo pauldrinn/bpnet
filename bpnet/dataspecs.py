@@ -1,8 +1,6 @@
 """
 Schemas describing the following configuration YAML files: dataspec.yml
 """
-from __future__ import absolute_import
-from __future__ import print_function
 from copy import deepcopy
 import os
 from collections import OrderedDict

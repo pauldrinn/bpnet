@@ -11,10 +11,24 @@ from kipoi_utils.external.flatten_json import flatten, unflatten
 from weakref import WeakValueDictionary
 import uuid
 from threading import Lock
+import six
 import logging
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
+def get_from_module(identifier, module_params, ignore_case=True):
+    if ignore_case:
+        _module_params = dict()
+        for key, value in six.iteritems(module_params):
+            _module_params[key.lower()] = value
+        _identifier = identifier.lower()
+    else:
+        _module_params = module_params
+        _identifier = identifier
+    item = _module_params.get(_identifier)
+    if not item:
+        raise ValueError('Invalid identifier "%s"!' % identifier)
+    return item
 
 def jupyter_nbconvert(input_ipynb):
     # NOTE: cwd is used since the input_ipynb could contain some strange output
@@ -359,14 +373,14 @@ def create_tf_session(visiblegpus, per_process_gpu_memory_fraction=0.45):
     import tensorflow as tf
     import keras.backend as K
     os.environ['CUDA_VISIBLE_DEVICES'] = str(visiblegpus)
-    session_config = tf.ConfigProto()
+    session_config = tf.compat.v1.ConfigProto()
     # session_config.gpu_options.deferred_deletion_bytes = DEFER_DELETE_SIZE
     if per_process_gpu_memory_fraction==1:
         session_config.gpu_options.allow_growth = True
     else:
         session_config.gpu_options.per_process_gpu_memory_fraction = per_process_gpu_memory_fraction
     session_config.gpu_options.polling_inactive_delay_msecs = 50
-    session = tf.Session(config=session_config)
+    session = tf.compat.v1.Session(config=session_config)
     K.set_session(session)
     #K.backend.set_session(session)
     return session

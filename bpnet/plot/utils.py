@@ -134,7 +134,7 @@ class PlotninePalette:
 
 def seqlogo_clean(seq, letter_width=0.2, height=0.8, title=None):
     import matplotlib.pyplot as plt
-    from concise.utils.plot import seqlogo
+    from bpnet.concise.plot import seqlogo
     fig, ax = plt.subplots(figsize=(letter_width * len(seq), height))
     ax.axison = False
     seqlogo(seq, ax=ax)

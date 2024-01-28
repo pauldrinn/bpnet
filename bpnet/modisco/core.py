@@ -7,7 +7,6 @@ import attr
 from tqdm import tqdm
 from copy import deepcopy
 from bpnet.modisco.utils import ic_scale, trim_pssm_idx
-from concise.utils.pwm import DEFAULT_LETTER_TO_INDEX, DEFAULT_INDEX_TO_LETTER
 from collections import OrderedDict
 from bpnet.plot.tracks import plot_tracks, filter_tracks, rc_tracks, skip_nan_tracks, pad_track, pad_tracks
 from bpnet.plot.profiles import extract_signal

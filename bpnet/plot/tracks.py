@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.ticker as ticker
 import matplotlib.pyplot as plt
 from collections import OrderedDict
-from concise.utils.pwm import seqlogo
+from bpnet.concise.plot import seqlogo
 from bpnet.plot.utils import simple_yaxis_format, strip_axis, spaced_xticks, draw_box, spine_subset, draw_hline
 
 

@@ -7,14 +7,11 @@ requirements = [
     "argh",
     "attr",
     "related",
-    "cloudpickle>=1.0.0",
-
-    "concise>=0.6.7",
-    "deepexplain",
+    "cloudpickle",
 
     # ml
     "gin-config",
-    "keras>=2.2.4",
+    "keras",
     "scikit-learn",
     # "tensorflow",
 
@@ -24,42 +21,42 @@ requirements = [
     "pandas",
     "scipy",
     "statsmodels",
+	"descartes",
+	"shapely",
 
     # Plotting
-    "matplotlib>=3.0.2",
+    "matplotlib",
     "plotnine",
     "seaborn",
 
     # genomics
     "pybigwig",
-    "pybedtools",  # remove?
-    "modisco>=0.5.1.2",
+    "pybedtools",
+    "modisco",
     # "pyranges",
 
     "joblib",
-    "cloudpickle>=1.0.0",  # - remove?
-    "kipoi>=0.6.8",
-    "kipoi-utils>=0.3.0",
-    "kipoiseq>=0.2.2",
+    "kipoi",
+    "kipoi-utils",
+    "kipoiseq",
 
     "papermill",
-    "jupyter_client>=6.1.2",
+    "jupyter_client",
     "ipykernel",
-    "nbconvert>=5.5.0",
-    "vdom>=0.6",
+    "nbconvert",
+    "vdom",
 
     # utils
     "ipython",
     "tqdm",
 
-    # Remove
-    "genomelake",
-    "pysam",  # replace with pyfaidx
+    "genomelake @ git+https://github.com/pauldrinn/genomelake.git",
+    "pysam",
 ]
 
 optional = [
     "comet_ml",
-    "wandb==0.8.7",
+    "wandb",
     "fastparquet",
     "python-snappy",
     "ipywidgets",  # for motif simulation
@@ -71,10 +68,6 @@ test_requirements = [
     # "pytest-xdist",
     "gdown",   # download files from google drive
     "virtualenv",
-]
-
-dependency_links = [
-    "deepexplain @ git+https://github.com/kundajelab/DeepExplain.git@#egg=deepexplain-0.1"
 ]
 
 

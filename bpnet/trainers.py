@@ -127,7 +127,7 @@ class SeqModelTrainer:
                 CSVLogger(self.history_path)
             ] + tb + wcp
         )
-        self.model.save(self.ckp_file)
+        self.model.save(self.ckp_file, save_format="h5")
 
         # log metrics from the best epoch
         try:

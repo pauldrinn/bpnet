@@ -4,7 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import make_pipeline
 from copy import deepcopy
 from bpnet.external.deeplift.dinuc_shuffle import dinuc_shuffle
-from concise.preprocessing.sequence import one_hot2string, encodeDNA, DNA
+from bpnet.concise.preprocessing import one_hot2string, encodeDNA, DNA
 from scipy.ndimage.filters import gaussian_filter1d
 import gin
 import random

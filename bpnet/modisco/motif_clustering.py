@@ -1,5 +1,4 @@
 from bpnet.plot.utils import strip_axis
-from concise.utils.plot import seqlogo
 from bpnet.plot.tracks import plot_track, plot_tracks
 import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import linkage, optimal_leaf_ordering, cut_tree, leaves_list

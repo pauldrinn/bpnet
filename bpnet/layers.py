@@ -1,9 +1,6 @@
 import keras.layers as kl
-from keras.engine.topology import Layer
 import tensorflow as tf
-from concise.utils.helper import get_from_module
-from concise.layers import SplineWeight1D
-from keras.models import Model, Sequential
+from bpnet.utils import get_from_module
 import numpy as np
 import gin
 
@@ -24,17 +21,10 @@ class GlobalAvgPoolFCN:
         self.batchnorm = batchnorm
         self.n_splines = n_splines
         self.hidden = hidden if hidden is not None else []
-        assert self.n_splines >= 0
+        assert self.n_splines == 0
 
     def __call__(self, x):
-        if self.n_splines == 0:
-            x = kl.GlobalAvgPool1D()(x)
-        else:
-            # Spline-transformation for the position aggregation
-            # This allows to up-weight positions in the middle
-            x = SplineWeight1D(n_bases=self.n_splines,
-                               share_splines=True)(x)
-            x = kl.GlobalAvgPool1D()(x)
+        x = kl.GlobalAvgPool1D()(x)
 
         if self.dropout:
             x = kl.Dropout(self.dropout)(x)

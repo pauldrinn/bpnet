@@ -5,7 +5,7 @@ import pytest
 from bpnet.cli.train import bpnet_train
 from pathlib import Path
 from bpnet.seqmodel import SeqModel
-from concise.preprocessing import encodeDNA
+from bpnet.concise.preprocessing import encodeDNA
 import gin
 import keras.backend as K
 

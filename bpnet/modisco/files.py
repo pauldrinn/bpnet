@@ -244,7 +244,7 @@ class ModiscoFile:
         TODO - add the reverse complementation option to it
         """
         import matplotlib.pyplot as plt
-        from concise.utils.plot import seqlogo_fig, seqlogo
+        from bpnet.concise.plot import seqlogo_fig, seqlogo
 
         seqs_all = self.extract_signal(x)
         ext_contribution_scores = {s: self.extract_signal(contrib)

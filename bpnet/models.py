@@ -2,7 +2,7 @@ import numpy as np
 import keras.layers as kl
 from keras.optimizers import Adam
 from keras.models import Model
-from concise.utils.helper import get_from_module
+from bpnet.utils import get_from_module
 import bpnet
 import bpnet.losses as blosses
 import gin

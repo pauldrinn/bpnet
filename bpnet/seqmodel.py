@@ -87,7 +87,7 @@ class SeqModel:
 
     def get_bottleneck_tensor(self, graph=None):
         if graph is None:
-            graph = tf.get_default_graph()
+            graph = tf.compat.v1.get_default_graph()
         return graph.get_tensor_by_name(self.bottleneck_name)
 
     def bottleneck_model(self):
@@ -129,9 +129,7 @@ class SeqModel:
         if k in self.contrib_fns:
             return self.contrib_fns[k]
 
-        import deepexplain
-        from deepexplain.tensorflow.methods import DeepLIFTRescale
-        from deepexplain.tensorflow import DeepExplain
+        import bpnet.deepexplain
         from bpnet.external.deeplift.dinuc_shuffle import dinuc_shuffle
         from keras.models import load_model, Model
         import keras.backend as K
@@ -139,7 +137,7 @@ class SeqModel:
         import tempfile
 
         self.contrib_fns = {}
-        with tempfile.NamedTemporaryFile(suffix='.pkl') as temp:
+        with tempfile.NamedTemporaryFile(suffix='.keras') as temp:
             self.model.save(temp.name)
             K.clear_session()
             self.model = load_model(temp.name)
@@ -158,7 +156,7 @@ class SeqModel:
         else:
             x_subset = x[:1]
 
-        with deepexplain.tensorflow.DeepExplain(session=K.get_session()) as de:
+        with bpnet.deepexplain.DeepExplain(session=K.get_session()) as de:
             fModel = Model(inputs=input_tensor, outputs=intp_tensors)
             target_tensors = fModel(input_tensor)
             for name, target_tensor in zip(intp_names, target_tensors):

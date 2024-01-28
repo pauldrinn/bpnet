@@ -124,7 +124,7 @@ def start_experiment(output_dir,
     if os.path.exists(os.path.join(output_dir, 'config.gin')):
         if overwrite:
             logger.info(f"config.gin already exists in the output "
-                        "directory {output_dir}. Removing the whole directory.")
+                        f"directory {output_dir}. Removing the whole directory.")
             shutil.rmtree(output_dir)
         else:
             raise ValueError(f"Output directory {output_dir} shouldn't exist!")
@@ -192,7 +192,7 @@ def gin2dict(gin_config_str):
             break
         if track:
             macros.append(line)
-    gin_macro_dict = yaml.load("\n".join(macros).replace("@", "").replace(" = %", ": ").replace(" = ", ": "))
+    gin_macro_dict = yaml.load("\n".join(macros).replace("@", "").replace(" = %", ": ").replace(" = ", ": "), Loader=yaml.Loader)
     lines = []
 
     for linei in gin_config_lines:
@@ -205,7 +205,7 @@ def gin2dict(gin_config_str):
     gin_config_dict = yaml.load("\n".join(lines)
                                 .replace("@", "")
                                 .replace(" = %", ": ")
-                                .replace(" = ", ": "))
+                                .replace(" = ", ": "), Loader=yaml.Loader)
     return gin_config_dict
 
 
@@ -374,7 +374,7 @@ def train(output_dir,
         np.random.seed(seed)
         try:
             import tensorflow as tf
-            tf.set_random_seed(seed)
+            tf.compat.v1.set_random_seed(seed)
         except Exception:
             logger.info("Unable to set random seed for tensorflow")
 

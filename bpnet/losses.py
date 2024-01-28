@@ -1,8 +1,9 @@
 """Loss functions
 """
 import tensorflow as tf
+import tensorflow_probability as tfp
 import keras.losses as kloss
-from concise.utils.helper import get_from_module
+from bpnet.utils import get_from_module
 import keras.backend as K
 import gin
 from gin import config
@@ -23,12 +24,13 @@ def multinomial_nll(true_counts, logits):
 
     counts_per_example = tf.reduce_sum(true_counts_perm, axis=-1)
 
-    dist = tf.contrib.distributions.Multinomial(total_count=counts_per_example,
+    # Change this to tfp. for TF2
+    dist = tfp.contrib.distributions.Multinomial(total_count=counts_per_example,
                                                 logits=logits_perm)
 
     # Normalize by batch size. One could also normalize by
     # sequence length here.
-    batch_size = tf.to_float(tf.shape(true_counts)[0])
+    batch_size = tf.cast(tf.shape(true_counts)[0], dtype=tf.float32)
 
     return -tf.reduce_sum(dist.log_prob(true_counts_perm)) / batch_size
 

@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from mpl_toolkits.axes_grid1.axes_divider import make_axes_locatable
-from mpl_toolkits.axes_grid1.colorbar import colorbar
 from matplotlib import colors
 from bpnet.plot.utils import MidpointNormalize
 
@@ -187,7 +186,7 @@ def heatmap_sequence(one_hot, ax=None, sort_idx=None, aspect='auto',
         ax2_divider = make_axes_locatable(ax)
         cax2 = ax2_divider.append_axes("top", size="5%", pad=0.05)
         # cb2 = colorbar(im2, cax=cax2, orientation="horizontal")
-        cb2 = colorbar(img, cax=cax2, cmap=cmap, norm=norm, boundaries=bounds,
+        cb2 = plt.colorbar(img, cax=cax2, cmap=cmap, norm=norm, boundaries=bounds,
                        orientation="horizontal",
                        ticks=[0, 1, 2, 3], format=fmt)
         cax2.xaxis.set_ticks_position("top")
