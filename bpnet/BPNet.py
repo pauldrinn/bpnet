@@ -252,14 +252,14 @@ class BPNetSeqModel:
                 # TODO - simplify?
                 viz_dict = OrderedDict(flatten_list([[
                     (f"{task} Pred", pred['pred'][task]),
-                    (f"{task} Contrib profile", pred['contrib_score'][f"{task}/{pred_summary}"] * seq),
+                    (f"{task} Contrib profile", pred['contrib_score'][f"{task}/{self._get_old_contrib_score_name(pred_summary)}"] * seq),
                     # (f"{task} Contrib counts", sum(pred['grads'][task_idx]['counts'].values()) / 2 * seq),
                 ] for task_idx, task in enumerate(self.tasks)]))
             else:
                 viz_dict = OrderedDict(flatten_list([[
                     (f"{task} Pred", pred['pred'][task]),
                     (f"{task} Obs", obs[task]),
-                    (f"{task} Contrib profile", pred['contrib_score'][f"{task}/{pred_summary}"] * seq),
+                    (f"{task} Contrib profile", pred['contrib_score'][f"{task}/{self._get_old_contrib_score_name(pred_summary)}"] * seq),
                     # (f"{task} Contrib counts", sum(pred['grads'][task_idx]['counts'].values()) / 2 * seq),
                 ] for task_idx, task in enumerate(self.tasks)]))
 
