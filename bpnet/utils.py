@@ -215,7 +215,7 @@ def kv_string2dict(s):
     """Convert a key-value string: k=v,k2=v2,... into a dictionary
     """
     import yaml
-    return yaml.load(s.replace(",", "\n").replace("=", ": "))
+    return yaml.load(s.replace(",", "\n").replace("=", ": "), Loader=yaml.Loader)
 
 
 def dict_suffix_key(d, suffix):
@@ -237,7 +237,7 @@ def kwargs_str2kwargs(hparams):
 
     """
     import yaml
-    return yaml.load(hparams.replace(";", "\n").replace("=", ": "))
+    return yaml.load(hparams.replace(";", "\n").replace("=", ": "), Loader=yaml.Loader)
 
 
 def apply_parallel(df_grouped, func, n_jobs=-1, verbose=True):

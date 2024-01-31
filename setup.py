@@ -4,7 +4,7 @@
 from setuptools import setup, find_packages
 
 requirements = [
-    "argh",
+    "argh<0.28",
     "attr",
     "related",
     "cloudpickle>=1.0.0",
@@ -19,14 +19,14 @@ requirements = [
     # "tensorflow",
 
     # numerics
-    "h5py",
+    "h5py<3",
     "numpy",
     "pandas",
     "scipy",
     "statsmodels",
 
     # Plotting
-    "matplotlib>=3.0.2",
+    "matplotlib>=3.0.2,<3.4.0",
     "plotnine",
     "seaborn",
 
