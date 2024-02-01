@@ -4,6 +4,29 @@ import matplotlib.pyplot as plt
 from matplotlib.collections import PatchCollection
 from matplotlib.patches import Rectangle
 import numpy as np
+import pandas as pd
+
+def bootstrap_mean(x, n=100):
+    """Bootstrap the mean computation"""
+    out = []
+
+    for i in range(n):
+        idx = pd.Series(np.arange(len(x))).sample(frac=1.0, replace=True).values
+        out.append(x[idx].mean(0))
+    outm = np.stack(out)
+    return outm.mean(0), outm.std(0)
+
+
+def nan_like(a, dtype=float):
+    a = np.empty(a.shape, dtype)
+    a.fill(np.nan)
+    return a
+
+
+def ic_scale(x):
+    from modisco.visualization import viz_sequence
+    background = np.array([0.27, 0.23, 0.23, 0.27])
+    return viz_sequence.ic_scale(x, background=background)
 
 
 def show_figure(fig):

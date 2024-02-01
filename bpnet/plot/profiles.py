@@ -4,9 +4,7 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 import numpy as np
-from bpnet.plot.utils import simple_yaxis_format, strip_axis, spaced_xticks
-from bpnet.modisco.utils import bootstrap_mean, nan_like, ic_scale
-from bpnet.plot.utils import show_figure
+from bpnet.plot.utils import simple_yaxis_format, strip_axis, bootstrap_mean, ic_scale, show_figure
 
 
 # TODO - make it as a bar-plot with two standard colors:
