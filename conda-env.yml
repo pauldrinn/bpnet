@@ -29,4 +29,3 @@ dependencies:
 - pip:
   - git+https://github.com/kundajelab/DeepExplain.git
   - git+https://github.com/pauldrinn/bpnet.git
-  - protobuf==3.20

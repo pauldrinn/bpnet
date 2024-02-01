@@ -10,6 +10,7 @@ requirements = [
     "cloudpickle>=1.0.0",
 
     "concise>=0.6.7",
+	"shapely<=1.8.5.post1"
     "deepexplain",
 
     # ml
